@@ -11,6 +11,7 @@
 }
 
 body {
+  min-width: 480px;
   background: #f5fbfc;
   color: var(--color-text);
   font-weight: 400;

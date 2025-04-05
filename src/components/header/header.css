@@ -10,7 +10,8 @@ header {
   align-items: center;
   padding: 20px 120px 8px 120px;
   background-color: #fff;
-  width: -webkit-fill-available;
+  max-width: var(--width-breakpoint-0);
+  margin: 0 auto;
   @media (max-width: 768px) {
     padding: 20px 40px 8px 40px;
   }
@@ -20,7 +21,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-width: 43%;
+  width: 39%;
+  max-width: 600px;
   @media (max-width: 1200px) {
     min-width: 60%;
   }
@@ -34,7 +36,8 @@ header {
   justify-content: space-between;
   align-items: center;
   margin: 0;
-  width: 70%;
+  padding: 0;
+  width: 66%;
   li a {
     padding: 20px 4px;
     transition: color 0.2s ease;

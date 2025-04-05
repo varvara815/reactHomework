@@ -3,7 +3,6 @@ import './menu.css';
 function Menu() {
     return (
         <>
-            <div className="menu-devider"></div>
             <div className="menu-title-container">
 
                     <h2 className="menu-title">Browse our menu</h2>
