@@ -1,0 +1,217 @@
+.menu-title-container {
+  padding: 150px 20px 0px 20px;
+  text-align: center;
+  background: white;
+  background-image: url(src/assets/menu/background.svg),
+    linear-gradient(to bottom, #f5fbfc 0%, #f5fbfc 100%);
+  background-size: cover, 100% 10%;
+  background-position: center top, bottom;
+  background-repeat: no-repeat, no-repeat;
+}
+
+.menu-title {
+  font-size: 50px;
+  color: var(--color-accent);
+  font-weight: 400;
+  line-height: 55px;
+  letter-spacing: 1.65px;
+  margin: 0;
+}
+
+.menu-title-text {
+  display: inline-block;
+  font-size: 16px;
+  line-height: 27px;
+  letter-spacing: 0.36px;
+  color: var(--color-text);
+  max-width: 466px;
+  margin: 0;
+  padding: 26px 0px 50px 0px;
+}
+
+.menu-title-highlight {
+  color: var(--color-accent);
+  cursor: pointer;
+}
+
+.menu-buttons-container {
+  padding-bottom: 41px;
+}
+
+@media (max-width: 768px) {
+  .menu-buttons {
+    margin: 0 auto;
+    max-width: 466px;
+  }
+}
+
+.menu-button {
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.36px;
+  color: #222222;
+  background-color: transparent;
+  border: 1px solid rgba(97, 114, 131, 0.2);
+  cursor: pointer;
+  padding: 16px 0px;
+  margin: 0 30px 0 0;
+  transition: all 0.2s ease;
+  border-radius: 6px;
+
+  &:active,
+  &.menu-button-selected {
+    background-color: var(--color-accent);
+    color: #fff;
+    border: 1px solid var(--color-accent);
+  }
+
+  &:last-child {
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    margin: 0 0 10px 0;
+    width: 100%;
+  }
+}
+
+.menu-button-dessert {
+  padding: 16px 46px;
+}
+
+.menu-button-dinner {
+  padding: 16px 31px 16px 32px;
+}
+
+.menu-button-breakfast {
+  padding: 16px 46px;
+}
+
+.menu-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.menu-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  justify-items: center;
+  max-width: var(--width-breakpoint-0);
+  @media (max-width: 1200px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.menu-item-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 580px;
+  max-height: 200px;
+  padding: 26px;
+  background-color: #fff;
+  border: 1px solid rgba(53, 184, 190, 0.15);
+  border-radius: 6px;
+}
+
+.menu-item-img {
+  padding-right: 30px;
+}
+
+.menu-item-title-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  height: 40px;
+  padding: 0 0 16px 0;
+}
+
+.menu-item-title-price h3 {
+  font-size: 18px;
+  line-height: 20px;
+  letter-spacing: 0.6px;
+  color: #08090a;
+  font-weight: 400;
+  margin: 0;
+}
+
+.menu-item-title-price span {
+  font-size: 15px;
+  line-height: 20px;
+  color: var(--color-accent);
+  font-weight: 400;
+  margin: 0;
+}
+
+.menu-item-description {
+  margin: 0;
+  padding: 0 0 8px 0;
+  color: var(--color-text);
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.32px;
+}
+
+.menu-item-add-to-cart {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-item-add-to-cart input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 60px;
+  height: 44px;
+  border-radius: 6px;
+  border: 1px solid #dddddd;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.36px;
+  background-color: #fafafa;
+  outline: none;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.menu-item-add-to-cart input::-webkit-outer-spin-button,
+.menu-item-add-to-cart input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.menu-item-add-to-cart button {
+  font-size: 16px;
+  line-height: 20px;
+  color: #fff;
+  background-color: var(--color-accent);
+  border: none;
+  cursor: pointer;
+  width: 147px;
+  height: 45px;
+  padding: 9px 27px;
+  border-radius: 6px;
+  margin-left: 8px;
+  transition: all 0.2s ease;
+}
+
+.menu-see-more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 64px 0 140px 0;
+}
+
+.menu-see-more button {
+  background-color: var(--color-accent);
+  border: none;
+  color: #fff;
+  width: 147px;
+  height: 52px;
+}

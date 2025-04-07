@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+:root {
+  --color-text: #546285;
+  --color-accent: #35b8be;
+  --width-breakpoint-0: 1200px;
+  --width-breakpoint-1: 1024px;
+  --width-breakpoint-2: 768px;
+  --width-breakpoint-3: 480px;
+  --width-breakpoint-4: 320px;
+}
+
+body {
+  min-width: 480px;
+  background: #f5fbfc;
+  color: var(--color-text);
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #28224b;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+li {
+  list-style: none;
+}
