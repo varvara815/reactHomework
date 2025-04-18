@@ -1,56 +1,92 @@
-import './menu.css';
+import React from "react";
+import "./menu.css";
+import ItemCard from "./menu-item/item-card";
+import UiButton from "../ui/button";
 
-function Menu() {
+class Menu extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      meals: [],
+      amountOfMeals: 6,
+    };
+  }
+
+  async componentDidMount() {
+    try {
+      const response = await fetch(
+        "https://65de35f3dccfcd562f5691bb.mockapi.io/api/v1/meals"
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log(data);
+      this.setState({ meals: data });
+    } catch (error) {
+      console.error("There was a problem with the fetch operation:", error);
+    }
+  }
+
+  render() {
+    const { meals, amountOfMeals } = this.state;
     return (
-        <>
-            <div className="menu-title-container">
-
-                    <h2 className="menu-title">Browse our menu</h2>
-                    <p className="menu-title-text">Use our menu to place an order online, or <span className="menu-title-highlight" title='+1234567890'>phone</span> our store to place a pickup order. Fast and fresh food.</p>
-                <div className="menu-buttons-container">
-                    <div className="menu-buttons">
-                        <button className="menu-button menu-button-dessert menu-button-selected" >Dessert</button>
-                        <button className="menu-button menu-button-dinner">Dinner</button>
-                        <button className="menu-button menu-button-breakfast">Breakfast</button>
-                    </div>
-                </div>
-            </div>
-            <div className="menu-wrapper">
-                <div className="menu-items">
-                {Array(6).fill(null).map((_, index) => (
-                    <article className="menu-item-container">
-                        <div className='menu-item-img'>
-                            <img src='/src/assets/menu/ham.jpg' alt='#' />
-                        </div>
-                        <div>
-                            <div>
-                                <div className="menu-item-title-price">
-                                    <h3>Burger Dreams {index}</h3>
-                                    <span>$ 9.20 USD</span>
-                                </div>
-                                <p className="menu-item-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                            </div>
-                            <div className="menu-item-add-to-cart">
-                                <div>
-                                    <label for='quantity'></label>
-                                    <input type='number' id='quantity' min='1' max='500' defaultValue='1' />
-                                </div>
-                                <button>Add to cart</button>
-                            </div>
-                        </div>
-                    </article>
-
-
-                    
-                ))}
-                </div>
-            </div>
-            <div className="menu-see-more">
-                <button className="menu-button">See more</button>
-            </div>
-        </>
+      <>
+        <div className='menu-title-container'>
+          <h2 className='menu-title'>Browse our menu</h2>
+          <p className='menu-title-text'>
+            Use our menu to place an order online, or{" "}
+            <span className='menu-title-highlight' title='+1234567890'>
+              phone
+            </span>{" "}
+            our store to place a pickup order. Fast and fresh food.
+          </p>
+        </div>
+        <div className='menu-buttons-container'>
+          <div className='menu-buttons'>
+            <UiButton text='Dessert' type='' />
+            <UiButton text='Dinner' type='inactive' />
+            <UiButton text='Breakfast' type='inactive' />
+          </div>
+        </div>
+        <div className='menu-wrapper'>
+          <div className='menu-items'>
+            {this.state.meals.map((meal, index) => {
+              if (index >= amountOfMeals) return null;
+              return (
+                <ItemCard
+                  key={index}
+                  title={meal.meal}
+                  price={meal.price}
+                  description={meal.instructions}
+                  imageUrl={meal.img}
+                  addToCart={this.props.addToCart}
+                  id={meal.id}
+                />
+              );
+            })}
+          </div>
+        </div>
+        <div className='menu-see-more'>
+          {amountOfMeals < meals.length && (
+            <UiButton
+              text='See more'
+              type=''
+              onClick={() => this.handleSeeMore()}
+            />
+          )}
+        </div>
+      </>
     );
-}
+  }
 
+  handleSeeMore = () => {
+    this.setState((prevState) => ({
+      amountOfMeals: prevState.amountOfMeals + 6,
+    }));
+  };
+}
 
 export default Menu;

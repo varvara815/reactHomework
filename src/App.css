@@ -3,6 +3,7 @@
 :root {
   --color-text: #546285;
   --color-accent: #35b8be;
+  --color-text-button: #222222;
   --width-breakpoint-0: 1200px;
   --width-breakpoint-1: 1024px;
   --width-breakpoint-2: 768px;

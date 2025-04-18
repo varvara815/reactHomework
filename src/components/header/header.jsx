@@ -1,38 +1,52 @@
-import './header.css'
+import React from "react";
+import "./header.css";
 
-
-function Header() {
-
-  return (
-  <>
-    <header class="header">
-        <nav class='header-container'>
-            <div class="header-logo">
-                <a href="#">
-                    <img src="/src/assets/header/logo.svg" alt="logo"></img>
+class Header extends React.Component {
+  render() {
+    return (
+      <>
+        <header className='header'>
+          <nav className='header-container'>
+            <div className='header-logo'>
+              <a href='#'>
+                <img src='/src/assets/header/logo.svg' alt='logo'></img>
+              </a>
+            </div>
+            <div className='header-menu'>
+              <ul className='header-menu-list'>
+                <li>
+                  <a href='#'>Home</a>
+                </li>
+                <li>
+                  <a href='#' className='header-menu-list-selected'>
+                    Menu
+                  </a>
+                </li>
+                <li>
+                  <a href='#'>Company</a>
+                </li>
+                <li>
+                  <a href='#' className='header-menu-list-login'>
+                    Login
+                  </a>
+                </li>
+              </ul>
+              <div className='cart-container'>
+                <a href='#'>
+                  <div className='cart'>
+                    <img src='/src/assets/header/cart.svg' alt='cart'></img>
+                    <span className='cart-quantity' id='cart-quantity'>
+                      {this.props.cartCount}
+                    </span>
+                  </div>
                 </a>
+              </div>
             </div>
-            <div class="header-menu">
-                <ul class="header-menu-list">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#" class="header-menu-list-selected">Menu</a></li>
-                    <li><a href="#">Company</a></li>
-                    <li><a href="#" class="header-menu-list-login">Login</a></li>
-                </ul>
-                <div class="cart-container">
-                    <a href='#'>
-                        <div class="cart">
-                            <img src="/src/assets/header/cart.svg" alt="cart"></img>
-                            <span class="cart-quantity">0</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </nav>
-    </header>
-  </>
-
-  );
+          </nav>
+        </header>
+      </>
+    );
+  }
 }
 
-export default Header
+export default Header;
