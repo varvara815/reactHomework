@@ -1,5 +1,5 @@
 header {
-  background-color: #fff;
+  background-color: #ffffff;
   width: 100%;
   margin: 0;
 }
@@ -9,7 +9,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px 120px 8px 120px;
-  background-color: #fff;
+  background-color: #ffffff;
   max-width: var(--width-breakpoint-0);
   margin: 0 auto;
   @media (max-width: 768px) {
@@ -74,7 +74,7 @@ header {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: #ffffff;
   font-size: 13px;
   line-height: 18px;
   color: var(--color-accent);

@@ -44,7 +44,7 @@ class ItemCard extends React.Component {
           <div className='menu-item-add-to-cart'>
             <input
               type='number'
-              id={"quantity" + id}
+              id={id}
               min='1'
               max='99'
               defaultValue='1'
@@ -53,6 +53,7 @@ class ItemCard extends React.Component {
             <UiButton
               text='Add to cart'
               type='button'
+              size='addToCart'
               onClick={this.handleAddToCart}
             />
           </div>

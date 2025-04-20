@@ -23,7 +23,6 @@ class Menu extends React.Component {
       }
 
       const data = await response.json();
-      console.log(data);
       this.setState({ meals: data });
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
@@ -37,18 +36,18 @@ class Menu extends React.Component {
         <div className='menu-title-container'>
           <h2 className='menu-title'>Browse our menu</h2>
           <p className='menu-title-text'>
-            Use our menu to place an order online, or{" "}
+            Use our menu to place an order online, or&nbsp;
             <span className='menu-title-highlight' title='+1234567890'>
               phone
-            </span>{" "}
-            our store to place a pickup order. Fast and fresh food.
+            </span>
+            &nbsp; our store to place a pickup order. Fast and fresh food.
           </p>
         </div>
         <div className='menu-buttons-container'>
           <div className='menu-buttons'>
-            <UiButton text='Dessert' type='' />
-            <UiButton text='Dinner' type='inactive' />
-            <UiButton text='Breakfast' type='inactive' />
+            <UiButton text='Dessert' type='' size='filter' />
+            <UiButton text='Dinner' type='inactive' size='filter' />
+            <UiButton text='Breakfast' type='inactive' size='filter' />
           </div>
         </div>
         <div className='menu-wrapper'>
@@ -69,14 +68,17 @@ class Menu extends React.Component {
             })}
           </div>
         </div>
-        <div className='menu-see-more'>
-          {amountOfMeals < meals.length && (
-            <UiButton
-              text='See more'
-              type=''
-              onClick={() => this.handleSeeMore()}
-            />
-          )}
+        <div className='menu-see-more-container'>
+          <div className='menu-see-more'>
+            {amountOfMeals < meals.length && (
+              <UiButton
+                text='See more'
+                type=''
+                size='seeMore'
+                onClick={() => this.handleSeeMore()}
+              />
+            )}
+          </div>
         </div>
       </>
     );

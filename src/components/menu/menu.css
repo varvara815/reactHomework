@@ -36,13 +36,12 @@
 
 .menu-buttons-container {
   padding-bottom: 41px;
-  display: flex;
-  justify-content: center;
 }
 
 .menu-buttons {
   display: flex;
-  gap: 20px;
+  justify-content: center;
+  gap: 30px;
   max-width: 466px;
   margin: 0 auto;
   @media (max-width: 1200px) {
@@ -74,9 +73,14 @@
   }
 }
 
+.menu-see-more-container {
+  padding: 64px 0 140px 0;
+}
+
 .menu-see-more {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 64px 0 140px 0;
+  max-width: 466px;
+  margin: 0 auto;
 }

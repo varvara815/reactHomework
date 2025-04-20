@@ -6,7 +6,7 @@
   max-width: 580px;
   max-height: 200px;
   padding: 26px;
-  background-color: #fff;
+  background-color: #ffffff;
   border: 1px solid rgba(53, 184, 190, 0.15);
   border-radius: 6px;
 }
@@ -54,6 +54,7 @@
 
 .menu-item-description {
   margin: 0 0 8px 0;
+  padding-right: 27px;
   color: var(--color-text);
   line-height: 24px;
   letter-spacing: 0.32px;

@@ -2,11 +2,6 @@ import React from "react";
 import "./footer.css";
 
 class Footer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   render() {
     return (
       <footer>
@@ -78,8 +73,7 @@ class Footer extends React.Component {
         <div className='footer-container-bottom'>
           <div className='footer-bottom-text'>
             <p>
-              {" "}
-              Built by <a href='#'>Flowbase</a> · Powered by{" "}
+              Built by <a href='#'>Flowbase</a> · Powered by&nbsp;
               <a href='#'>Webflow</a>
             </p>
           </div>
