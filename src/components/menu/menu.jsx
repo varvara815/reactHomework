@@ -12,6 +12,12 @@ class Menu extends React.Component {
     };
   }
 
+  handleSeeMore = () => {
+    this.setState((prevState) => ({
+      amountOfMeals: prevState.amountOfMeals + 6,
+    }));
+  };
+
   async componentDidMount() {
     try {
       const response = await fetch(
@@ -83,12 +89,6 @@ class Menu extends React.Component {
       </>
     );
   }
-
-  handleSeeMore = () => {
-    this.setState((prevState) => ({
-      amountOfMeals: prevState.amountOfMeals + 6,
-    }));
-  };
 }
 
 export default Menu;
