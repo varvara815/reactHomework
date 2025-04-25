@@ -34,30 +34,6 @@
   cursor: pointer;
 }
 
-.menu-buttons-container {
-  padding-bottom: 41px;
-}
-
-.menu-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  max-width: 466px;
-  margin: 0 auto;
-  @media (max-width: 1200px) {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  .menu-buttons {
-    margin: 0 auto;
-    max-width: 466px;
-  }
-}
-
 .menu-wrapper {
   display: flex;
   justify-content: center;

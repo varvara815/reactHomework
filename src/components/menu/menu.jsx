@@ -1,94 +1,84 @@
 import React from "react";
-import "./menu.css";
+
 import ItemCard from "./menu-item/item-card";
 import UiButton from "../ui/button";
+import CategoryFilter from "../categoryFilter/categoryFilter";
 
-class Menu extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      meals: [],
-      amountOfMeals: 6,
-    };
-  }
+import { mealsChunkSize, mealsAPI } from "../constans";
 
-  handleSeeMore = () => {
-    this.setState((prevState) => ({
-      amountOfMeals: prevState.amountOfMeals + 6,
-    }));
+import "./menu.css";
+
+const Menu = ({ addToCart }) => {
+  const [allMeals, setAllMeals] = React.useState([]);
+  const [amountOfMeals, setAmountOfMeals] = React.useState(mealsChunkSize);
+  const [activeCategoryIndex, setActiveCategoryIndex] = React.useState(0);
+
+  React.useEffect(() => {
+    fetch(mealsAPI)
+      .then((response) => response.json())
+      .then((data) => setAllMeals(data))
+      .catch((error) => console.error("Error fetching meals:", error));
+  }, []);
+
+  const mealsCategories = [...new Set(allMeals.map((item) => item.category))];
+
+  const mealsCategorySelected = mealsCategories[activeCategoryIndex];
+  const handleSeeMore = () => {
+    setAmountOfMeals((prevState) => prevState + mealsChunkSize);
   };
 
-  async componentDidMount() {
-    try {
-      const response = await fetch(
-        "https://65de35f3dccfcd562f5691bb.mockapi.io/api/v1/meals"
-      );
+  const mealsFilteredByCategory = allMeals.filter(
+    (meal) => meal.category === mealsCategorySelected
+  );
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+  const mealsToDisplay = mealsFilteredByCategory.slice(0, amountOfMeals);
+  return (
+    <>
+      <div className='menu-title-container'>
+        <h2 className='menu-title'>Browse our menu</h2>
+        <p className='menu-title-text'>
+          Use our menu to place an order online, or&nbsp;
+          <span className='menu-title-highlight' title='+1234567890'>
+            phone
+          </span>
+          &nbsp;our store to place a pickup order. Fast and fresh food.
+        </p>
+      </div>
+      <CategoryFilter
+        mealsCategories={mealsCategories}
+        activeCategory={activeCategoryIndex}
+        setActiveCategoryIndex={setActiveCategoryIndex}
+      />
 
-      const data = await response.json();
-      this.setState({ meals: data });
-    } catch (error) {
-      console.error("There was a problem with the fetch operation:", error);
-    }
-  }
-
-  render() {
-    const { meals, amountOfMeals } = this.state;
-    return (
-      <>
-        <div className='menu-title-container'>
-          <h2 className='menu-title'>Browse our menu</h2>
-          <p className='menu-title-text'>
-            Use our menu to place an order online, or&nbsp;
-            <span className='menu-title-highlight' title='+1234567890'>
-              phone
-            </span>
-            &nbsp; our store to place a pickup order. Fast and fresh food.
-          </p>
+      <div className='menu-wrapper'>
+        <div className='menu-items'>
+          {mealsToDisplay.map((meal, index) => (
+            <ItemCard
+              key={index}
+              title={meal.meal}
+              price={meal.price}
+              description={meal.instructions}
+              imageUrl={meal.img}
+              addToCart={addToCart}
+              id={meal.id}
+            />
+          ))}
         </div>
-        <div className='menu-buttons-container'>
-          <div className='menu-buttons'>
-            <UiButton text='Dessert' type='' size='filter' />
-            <UiButton text='Dinner' type='inactive' size='filter' />
-            <UiButton text='Breakfast' type='inactive' size='filter' />
-          </div>
+      </div>
+      <div className='menu-see-more-container'>
+        <div className='menu-see-more'>
+          {mealsFilteredByCategory.length > mealsToDisplay.length && (
+            <UiButton
+              text='See more'
+              type=''
+              size='seeMore'
+              onClick={handleSeeMore}
+            />
+          )}
         </div>
-        <div className='menu-wrapper'>
-          <div className='menu-items'>
-            {this.state.meals.map((meal, index) => {
-              if (index >= amountOfMeals) return null;
-              return (
-                <ItemCard
-                  key={index}
-                  title={meal.meal}
-                  price={meal.price}
-                  description={meal.instructions}
-                  imageUrl={meal.img}
-                  addToCart={this.props.addToCart}
-                  id={meal.id}
-                />
-              );
-            })}
-          </div>
-        </div>
-        <div className='menu-see-more-container'>
-          <div className='menu-see-more'>
-            {amountOfMeals < meals.length && (
-              <UiButton
-                text='See more'
-                type=''
-                size='seeMore'
-                onClick={() => this.handleSeeMore()}
-              />
-            )}
-          </div>
-        </div>
-      </>
-    );
-  }
-}
+      </div>
+    </>
+  );
+};
 
 export default Menu;

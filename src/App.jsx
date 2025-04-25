@@ -1,35 +1,23 @@
+import React from "react";
 import "./App.css";
 import Header from "./components/header/header.jsx";
 import Footer from "./components/footer/footer.jsx";
 import Menu from "./components/menu/menu.jsx";
 
-import React, { Component } from "react";
+const App = () => {
+  const [cartCount, setCartCount] = React.useState(0);
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      cartCount: 0,
-    };
-  }
-
-  incrementCartCount = (number) => {
-    this.setState((prevState) => ({
-      cartCount: prevState.cartCount + number,
-    }));
+  const incrementCartCount = (number) => {
+    setCartCount((prevState) => prevState + number);
   };
 
-  render() {
-    const { cartCount } = this.state;
-
-    return (
-      <>
-        <Header cartCount={cartCount} />
-        <Menu addToCart={this.incrementCartCount} />
-        <Footer />
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <Header cartCount={cartCount} />
+      <Menu addToCart={incrementCartCount} />
+      <Footer />
+    </>
+  );
+};
 
 export default App;
