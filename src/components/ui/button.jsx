@@ -1,38 +1,29 @@
 import React from "react";
 import "./button.css";
 
-class UiButton extends React.Component {
-  render() {
-    const { text, type, onClick, size } = this.props;
-    let buttonType = "";
-    let buttonSize = "";
-    if (type === "inactive") {
-      buttonType = "button_inactive";
-    }
-
+const UiButton = ({ text, type, onClick, size }) => {
+  const buttonType = type === "inactive" ? "button_inactive" : "";
+  const buttonSize = (() => {
     switch (size) {
       case "addToCart":
-        buttonSize = "button_addToCart";
-        break;
+        return "button_addToCart";
       case "seeMore":
-        buttonSize = "button_seeMore";
-        break;
+        return "button_seeMore";
       case "filter":
-        buttonSize = "button_filter";
-        break;
+        return "button_filter";
       default:
-        buttonSize = "";
+        return "";
     }
+  })();
 
-    return (
-      <button
-        onClick={onClick}
-        className={`menu-button ${buttonType} ${buttonSize} `}
-      >
-        {text}
-      </button>
-    );
-  }
-}
+  return (
+    <button
+      onClick={onClick}
+      className={`menu-button ${buttonType} ${buttonSize}`}
+    >
+      {text}
+    </button>
+  );
+};
 
 export default UiButton;
