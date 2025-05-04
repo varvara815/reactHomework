@@ -1,24 +1,31 @@
-import React from "react";
+import React from 'react';
 
-import ItemCard from "./menu-item/item-card";
-import UiButton from "../ui/button";
-import CategoryFilter from "../categoryFilter/categoryFilter";
+import ItemCard from './menu-item/item-card';
+import UiButton from '../ui/button';
+import CategoryFilter from '../categoryFilter/categoryFilter';
 
-import { mealsChunkSize, mealsAPI } from "../constans";
+import useFetch from '../../hooks/useFetch';
 
-import "./menu.css";
+import { mealsChunkSize, mealsAPI } from '../constans';
+
+import './menu.css';
 
 const Menu = ({ addToCart }) => {
   const [allMeals, setAllMeals] = React.useState([]);
   const [amountOfMeals, setAmountOfMeals] = React.useState(mealsChunkSize);
   const [activeCategoryIndex, setActiveCategoryIndex] = React.useState(0);
 
+  const { data, error } = useFetch(mealsAPI);
+
   React.useEffect(() => {
-    fetch(mealsAPI)
-      .then((response) => response.json())
-      .then((data) => setAllMeals(data))
-      .catch((error) => console.error("Error fetching meals:", error));
-  }, []);
+    if (data === null) return;
+    if (!data.length) return;
+    if (!error) {
+      setAllMeals(data);
+    } else {
+      return;
+    }
+  }, [data, error]);
 
   const mealsCategories = [...new Set(allMeals.map((item) => item.category))];
 

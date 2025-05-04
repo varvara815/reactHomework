@@ -40,6 +40,11 @@
   padding: 16px 36px;
 }
 
+.button_placeAnOrder {
+  padding: 19px 35px 21px 35px;
+  font-size: 17px;
+}
+
 .button_inactive {
   color: var(--color-text-button);
   background-color: transparent;
