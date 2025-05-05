@@ -15,7 +15,7 @@ const Menu = ({ addToCart }) => {
   const [amountOfMeals, setAmountOfMeals] = React.useState(mealsChunkSize);
   const [activeCategoryIndex, setActiveCategoryIndex] = React.useState(0);
 
-  const { data, error } = useFetch(mealsAPI);
+  const { data, error } = useFetch(mealsAPI, 'GET');
 
   React.useEffect(() => {
     if (data === null) return;

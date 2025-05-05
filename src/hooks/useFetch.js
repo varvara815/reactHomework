@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
 const options = {
-  method: 'GET',
   headers: {
     'Content-Type': 'application/json',
   },
 };
-const useFetch = (url) => {
+const useFetch = (url, method) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        options.method = method;
         const response = await fetch(url, options);
         const data = await response.json();
         setData(data);
@@ -21,6 +21,8 @@ const useFetch = (url) => {
           status: response.status,
         };
         localStorage.setItem('apiLogs', JSON.stringify(log));
+
+        console.log(log);
       } catch (error) {
         setError(error.message);
       }
