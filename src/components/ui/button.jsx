@@ -1,18 +1,20 @@
-import React from "react";
-import "./button.css";
+import React from 'react';
+import './button.css';
 
 const UiButton = ({ text, type, onClick, size }) => {
-  const buttonType = type === "inactive" ? "button_inactive" : "";
+  const buttonType = type === 'inactive' ? 'button_inactive' : '';
   const buttonSize = (() => {
     switch (size) {
-      case "addToCart":
-        return "button_addToCart";
-      case "seeMore":
-        return "button_seeMore";
-      case "filter":
-        return "button_filter";
+      case 'addToCart':
+        return 'button_addToCart';
+      case 'seeMore':
+        return 'button_seeMore';
+      case 'filter':
+        return 'button_filter';
+      case 'placeAnOrder':
+        return 'button_placeAnOrder';
       default:
-        return "";
+        return '';
     }
   })();
 
