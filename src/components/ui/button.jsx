@@ -13,6 +13,10 @@ const UiButton = ({ text, type, onClick, size }) => {
         return 'button_filter';
       case 'placeAnOrder':
         return 'button_placeAnOrder';
+      case 'submit':
+        return '.button_submit';
+      case 'cancel':
+        return '.button_cancel';
       default:
         return '';
     }
@@ -21,7 +25,7 @@ const UiButton = ({ text, type, onClick, size }) => {
   return (
     <button
       onClick={onClick}
-      className={`menu-button ${buttonType} ${buttonSize}`}
+      className={`ui-button ${buttonType} ${buttonSize}`}
     >
       {text}
     </button>
