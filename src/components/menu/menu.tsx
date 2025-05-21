@@ -8,10 +8,12 @@ import useFetch from '../../hooks/useFetch';
 
 import { mealsChunkSize, mealsAPI } from '../constans';
 
+import { MenuProps, Meal } from '../../../custom';
+
 import './menu.css';
 
-const Menu = ({ addToCart }) => {
-  const [allMeals, setAllMeals] = React.useState([]);
+const Menu = ({ addToCart }: MenuProps) => {
+  const [allMeals, setAllMeals] = React.useState<Meal[]>([]);
   const [amountOfMeals, setAmountOfMeals] = React.useState(mealsChunkSize);
   const [activeCategoryIndex, setActiveCategoryIndex] = React.useState(0);
 
@@ -19,15 +21,15 @@ const Menu = ({ addToCart }) => {
 
   React.useEffect(() => {
     if (data === null) return;
-    if (!data.length) return;
+    if (Array.isArray(data) && (data as Meal[]).length === 0) return;
     if (!error) {
-      setAllMeals(data);
+      setAllMeals(data as Meal[]);
     } else {
       return;
     }
   }, [data, error]);
 
-  const mealsCategories = [...new Set(allMeals.map((item) => item.category))];
+  const mealsCategories = [...new Set(allMeals.map((item: Meal) => item.category))];
 
   const mealsCategorySelected = mealsCategories[activeCategoryIndex];
   const handleSeeMore = () => {
@@ -35,7 +37,7 @@ const Menu = ({ addToCart }) => {
   };
 
   const mealsFilteredByCategory = allMeals.filter(
-    (meal) => meal.category === mealsCategorySelected
+    (meal: Meal) => meal.category === mealsCategorySelected
   );
 
   const mealsToDisplay = mealsFilteredByCategory.slice(0, amountOfMeals);
@@ -59,7 +61,7 @@ const Menu = ({ addToCart }) => {
 
       <div className='menu-wrapper'>
         <div className='menu-items'>
-          {mealsToDisplay.map((meal, index) => (
+          {mealsToDisplay.map((meal: Meal, index: number)  => (
             <ItemCard
               key={index}
               title={meal.meal}

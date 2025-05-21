@@ -1,12 +1,13 @@
 import React from "react";
 import "./categoryFilter.css";
 import UiButton from "../ui/button";
+import { CategoryFilterProps } from "../../../custom"; 
 
 const CategoryFilter = ({
   mealsCategories,
   activeCategory,
   setActiveCategoryIndex,
-}) => {
+}: CategoryFilterProps) => {
   return (
     <div className='menu-buttons-container'>
       <div className='menu-buttons'>

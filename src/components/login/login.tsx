@@ -6,7 +6,9 @@ import './login.css';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './firebase';
 
-const Login = ({ onSuccessfulSubmit }) => {
+import { LoginProps } from '../../../custom';
+
+const Login = ({ onSuccessfulSubmit }: LoginProps) => {
   const [email, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   const handleReset = () => {
@@ -23,7 +25,7 @@ const Login = ({ onSuccessfulSubmit }) => {
       );
 
       console.log('User submitted: ', userCredential);
-      onSuccessfulSubmit();
+      onSuccessfulSubmit?.();
     } catch (error) {
       console.log(error);
     }
@@ -72,7 +74,7 @@ const Login = ({ onSuccessfulSubmit }) => {
             placeholder='Enter password'
             required
             autoComplete='current-password'
-            minLength='8'
+            minLength={8}
             pattern='^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{8,}$'
             title='The password must contain at least 8 characters, including english letters and numbers.'
           />

@@ -1,15 +1,15 @@
 import React from 'react';
 import './App.css';
-import Header from './components/header/header.jsx';
-import Footer from './components/footer/footer.jsx';
-import Menu from './components/menu/menu.jsx';
-import Intro from './components/intro/intro.jsx';
-import Login from './components/login/login.jsx';
+import Header from './components/header/header.js';
+import Footer from './components/footer/footer.js';
+import Menu from './components/menu/menu.js';
+import Intro from './components/intro/intro.js';
+import Login from './components/login/login.js';
 
 const App = () => {
   const [cartCount, setCartCount] = React.useState(0);
 
-  const incrementCartCount = (number) => {
+  const incrementCartCount = (number: number) => {
     setCartCount((prevState) => prevState + number);
   };
 
@@ -19,7 +19,7 @@ const App = () => {
     setDisplayPage((prevState) => prevState + 1);
   };
 
-  const setPage = (page) => {
+  const setPage = (page: number) => {
     setDisplayPage(page);
   };
 

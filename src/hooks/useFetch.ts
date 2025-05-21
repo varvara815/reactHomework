@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
-const options = {
+
+import { FetchOptions, FetchResponse } from '../../custom';
+
+const options: FetchOptions = {
   headers: {
     'Content-Type': 'application/json',
   },
 };
-const useFetch = (url, method) => {
+const useFetch = (url: string, method: string) => {
   const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,7 +27,7 @@ const useFetch = (url, method) => {
 
         console.log(log);
       } catch (error) {
-        setError(error.message);
+        setError((error as Error).message);
       }
     };
     fetchData();
