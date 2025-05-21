@@ -1,7 +1,7 @@
-import React from "react";
-import "./header.css";
+import React from 'react';
+import './header.css';
 
-const Header = ({ cartCount }) => {
+const Header = ({ cartCount, goToPage }) => {
   return (
     <>
       <header className='header'>
@@ -14,10 +14,16 @@ const Header = ({ cartCount }) => {
           <div className='header-menu'>
             <ul className='header-menu-list'>
               <li>
-                <a href='#'>Home</a>
+                <a href='#' onClick={() => goToPage(1)}>
+                  Home
+                </a>
               </li>
               <li>
-                <a href='#' className='header-menu-list-selected'>
+                <a
+                  href='#'
+                  className='header-menu-list-selected'
+                  onClick={() => goToPage(2)}
+                >
                   Menu
                 </a>
               </li>
@@ -25,7 +31,11 @@ const Header = ({ cartCount }) => {
                 <a href='#'>Company</a>
               </li>
               <li>
-                <a href='#' className='header-menu-list-login'>
+                <a
+                  href='#'
+                  className='header-menu-list-login'
+                  onClick={() => goToPage(0)}
+                >
                   Login
                 </a>
               </li>
