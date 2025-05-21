@@ -1,7 +1,9 @@
 import React from 'react';
 import './button.css';
 
-const UiButton = ({ text, type, onClick, size }) => {
+import { UiButtonProps } from '../../../custom';
+
+const UiButton = ({ text, type, onClick, size }: UiButtonProps) => {
   const buttonType = type === 'inactive' ? 'button_inactive' : '';
   const buttonSize = (() => {
     switch (size) {

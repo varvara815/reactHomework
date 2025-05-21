@@ -1,0 +1,60 @@
+export interface CategoryFilterProps {
+  mealsCategories: string[];
+  activeCategory: number;
+  setActiveCategoryIndex: (index: number) => void;
+}
+
+export interface HeaderProps {
+  cartCount: number;
+  goToPage?: (page: number) => void;
+}
+
+export interface IntroProps {
+  showIntro: () => void;
+}
+
+export interface LoginProps {
+  onSuccessfulSubmit?: () => void;
+}
+
+export interface UiButtonProps {
+  text: string;
+  type: string;
+  size: string;
+  onClick?: () => void;
+}
+
+export interface ItemCardProps {
+  title: string;
+  price: number;
+  description: string;
+  imageUrl: string;
+  id: string;
+  addToCart: (quantity: number) => void;
+}
+
+export interface MenuProps {
+  addToCart: (quantity: number) => void;
+}
+
+export interface Meal {
+  id: string;
+  meal: string;
+  category: string;
+  price: number;
+  instructions: string;
+  img: string;
+  [key: string]: any;
+}
+
+export interface FetchOptions {
+  headers: {
+    'Content-Type': string;
+  };
+  method?: string;
+}
+
+export interface FetchResponse<T> {
+  data: T | null;
+  error: string | null;
+}

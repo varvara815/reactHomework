@@ -8,9 +8,11 @@ import {
   IntroRating,
   IntroTrustpilot,
   IntroDeliveryImage,
-} from '../intro/intro.styled';
+} from './intro.styled';
 
-const Intro = ({ showIntro }) => {
+import { IntroProps } from '../../../custom';
+
+const Intro = ({ showIntro }: IntroProps) => {
   return (
     <>
       <IntroContainer>
