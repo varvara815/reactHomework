@@ -2,9 +2,12 @@ import React from "react";
 import "./item-card.css";
 import UiButton from "../../ui/button";
 
-const ItemCard = ({ title, price, description, imageUrl, id, addToCart }) => {
+import { ItemCardProps } from "../../../../custom"; 
+
+const ItemCard = ({ title, price, description, imageUrl, id, addToCart }: ItemCardProps) => {
   const handleAddToCart = () => {
-    const quantity = document.getElementById(id).value;
+    const quantityElement = document.getElementById(id) as HTMLInputElement;
+    const quantity = quantityElement.value;
     addToCart(+quantity);
   };
 
