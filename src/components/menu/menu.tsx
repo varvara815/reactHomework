@@ -1,39 +1,31 @@
-import React from 'react';
+import { useEffect } from 'react';
 
 import ItemCard from './menu-item/item-card';
 import UiButton from '../ui/button';
 import CategoryFilter from '../categoryFilter/categoryFilter';
 
-import useFetch from '../../hooks/useFetch';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import {useAppSelector } from '../../hooks/useAppSelector';
 
-import { mealsChunkSize, mealsAPI } from '../constans';
+import { fetchMeals, setActiveCategoryIndex, increaseAmountOfMeals } from '../../store/mealsSlice';
 
-import { MenuProps, Meal } from '../../../custom';
+import { Meal } from '../../../custom';
 
 import './menu.css';
 
-const Menu = ({ addToCart }: MenuProps) => {
-  const [allMeals, setAllMeals] = React.useState<Meal[]>([]);
-  const [amountOfMeals, setAmountOfMeals] = React.useState(mealsChunkSize);
-  const [activeCategoryIndex, setActiveCategoryIndex] = React.useState(0);
+const Menu = () => {
+  const dispatch = useAppDispatch();
+  const { allMeals, activeCategoryIndex, amountOfMeals, loading, error } = useAppSelector((state) => state.meals);
 
-  const { data, error } = useFetch(mealsAPI, 'GET');
-
-  React.useEffect(() => {
-    if (data === null) return;
-    if (Array.isArray(data) && (data as Meal[]).length === 0) return;
-    if (!error) {
-      setAllMeals(data as Meal[]);
-    } else {
-      return;
-    }
-  }, [data, error]);
+  useEffect(() => {
+    dispatch(fetchMeals());
+  }, [dispatch]);
 
   const mealsCategories = [...new Set(allMeals.map((item: Meal) => item.category))];
-
   const mealsCategorySelected = mealsCategories[activeCategoryIndex];
+
   const handleSeeMore = () => {
-    setAmountOfMeals((prevState) => prevState + mealsChunkSize);
+    dispatch(increaseAmountOfMeals());
   };
 
   const mealsFilteredByCategory = allMeals.filter(
@@ -41,6 +33,10 @@ const Menu = ({ addToCart }: MenuProps) => {
   );
 
   const mealsToDisplay = mealsFilteredByCategory.slice(0, amountOfMeals);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+
   return (
     <>
       <div className='menu-title-container'>
@@ -56,19 +52,18 @@ const Menu = ({ addToCart }: MenuProps) => {
       <CategoryFilter
         mealsCategories={mealsCategories}
         activeCategory={activeCategoryIndex}
-        setActiveCategoryIndex={setActiveCategoryIndex}
+        setActiveCategoryIndex={(index) => dispatch(setActiveCategoryIndex(index))}
       />
 
       <div className='menu-wrapper'>
         <div className='menu-items'>
-          {mealsToDisplay.map((meal: Meal, index: number)  => (
+          {mealsToDisplay.map((meal: Meal, index: number) => (
             <ItemCard
               key={index}
               title={meal.meal}
               price={meal.price}
               description={meal.instructions}
               imageUrl={meal.img}
-              addToCart={addToCart}
               id={meal.id}
             />
           ))}

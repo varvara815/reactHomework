@@ -47,6 +47,14 @@ export interface Meal {
   [key: string]: any;
 }
 
+interface MealsState {
+  allMeals: Meal[];
+  loading: boolean;
+  error: string | null;
+  activeCategoryIndex: number;
+  amountOfMeals: number;
+  mealsChunkSize: number;
+}
 export interface FetchOptions {
   headers: {
     'Content-Type': string;
@@ -57,4 +65,27 @@ export interface FetchOptions {
 export interface FetchResponse<T> {
   data: T | null;
   error: string | null;
+}
+
+export interface CartState {
+  count: number;
+}
+export interface AppState {
+  displayPage: number;
+}
+export interface RootState {
+  app: {
+    displayPage: number;
+  };
+  cart: {
+    count: number;
+  };
+  meals: {
+    allMeals: Meal[];
+    loading: boolean;
+    error: string | null;
+    activeCategoryIndex: number;
+    amountOfMeals: number;
+    mealsChunkSize: number;
+  };
 }
