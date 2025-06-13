@@ -1,5 +1,6 @@
-import React from 'react';
 import UiButton from '../ui/button';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { nextPage } from '../../store/appSlice';
 import {
   IntroContainer,
   IntroTitle,
@@ -10,9 +11,16 @@ import {
   IntroDeliveryImage,
 } from './intro.styled';
 
-import { IntroProps } from '../../../custom';
 
-const Intro = ({ showIntro }: IntroProps) => {
+
+const Intro = () => {
+
+const dispatch = useAppDispatch();
+  
+const handleButtonClick = () => {
+    dispatch(nextPage());
+};
+
   return (
     <>
       <IntroContainer>
@@ -30,7 +38,7 @@ const Intro = ({ showIntro }: IntroProps) => {
               text='Place an Order'
               type='button'
               size='placeAnOrder'
-              onClick={showIntro}
+              onClick={handleButtonClick}
             />
           </IntroButtonWrapper>
 

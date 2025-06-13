@@ -1,14 +1,17 @@
-import React from "react";
 import "./item-card.css";
 import UiButton from "../../ui/button";
+import { useAppDispatch } from "../../../hooks/useAppDispatch";
+import { incrementCartCount } from "../../../store/cartSlice";
 
 import { ItemCardProps } from "../../../../custom"; 
 
-const ItemCard = ({ title, price, description, imageUrl, id, addToCart }: ItemCardProps) => {
+const ItemCard = ({ title, price, description, imageUrl, id }: Omit<ItemCardProps, 'addToCart'>) => {
+  const dispatch = useAppDispatch();
+  
   const handleAddToCart = () => {
     const quantityElement = document.getElementById(id) as HTMLInputElement;
     const quantity = quantityElement.value;
-    addToCart(+quantity);
+    dispatch(incrementCartCount(+quantity));
   };
 
   return (

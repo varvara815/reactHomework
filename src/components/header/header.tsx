@@ -1,9 +1,16 @@
-import React from 'react';
 import './header.css';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { useAppSelector } from '../../hooks/useAppSelector';
+import { setPage } from '../../store/appSlice';
 
-import { HeaderProps } from '../../../custom'; 
+const Header = () => {
+  const dispatch = useAppDispatch();
+  const cartCount = useAppSelector((state) => state.cart.count);
+  
+  const goToPage = (page: number) => {
+    dispatch(setPage(page));
+  };
 
-const Header = ({ cartCount, goToPage }: HeaderProps) => {
   return (
     <>
       <header className='header'>
@@ -16,7 +23,7 @@ const Header = ({ cartCount, goToPage }: HeaderProps) => {
           <div className='header-menu'>
             <ul className='header-menu-list'>
               <li>
-                <a href='#' onClick={() => goToPage?.(1)}>
+                <a href='#' onClick={() => goToPage(1)}>
                   Home
                 </a>
               </li>
@@ -24,7 +31,7 @@ const Header = ({ cartCount, goToPage }: HeaderProps) => {
                 <a
                   href='#'
                   className='header-menu-list-selected'
-                  onClick={() => goToPage?.(2)}
+                  onClick={() => goToPage(2)}
                 >
                   Menu
                 </a>
@@ -36,7 +43,7 @@ const Header = ({ cartCount, goToPage }: HeaderProps) => {
                 <a
                   href='#'
                   className='header-menu-list-login'
-                  onClick={() => goToPage?.(0)}
+                  onClick={() => goToPage(0)}
                 >
                   Login
                 </a>

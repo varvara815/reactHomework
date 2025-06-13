@@ -6,11 +6,16 @@ import './login.css';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './firebase';
 
-import { LoginProps } from '../../../custom';
 
-const Login = ({ onSuccessfulSubmit }: LoginProps) => {
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { nextPage } from '../../store/appSlice';
+
+
+const Login = () => {
   const [email, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const dispatch = useAppDispatch();
+
   const handleReset = () => {
     setUsername('');
     setPassword('');
@@ -25,7 +30,9 @@ const Login = ({ onSuccessfulSubmit }: LoginProps) => {
       );
 
       console.log('User submitted: ', userCredential);
-      onSuccessfulSubmit?.();
+
+      dispatch(nextPage());
+
     } catch (error) {
       console.log(error);
     }
