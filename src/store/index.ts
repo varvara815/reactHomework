@@ -4,11 +4,11 @@ import cartReducer from './cartSlice';
 import mealsReducer from './mealsSlice';
 
 export const store = configureStore({
-  reducer: {
-    app: appReducer,
-    cart: cartReducer,
-    meals: mealsReducer,
-  },
+	reducer: {
+		app: appReducer,
+		cart: cartReducer,
+		meals: mealsReducer,
+	},
 });
 
 export type RootState = ReturnType<typeof store.getState>;
