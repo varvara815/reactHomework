@@ -1,0 +1,16 @@
+.company-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.company-container h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.company-container p {
+  font-size: 18px;
+  line-height: 1.6;
+}

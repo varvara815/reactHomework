@@ -1,69 +1,79 @@
 import './header.css';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { useAppSelector } from '../../hooks/useAppSelector';
-import { setPage } from '../../store/appSlice';
+import { Link, NavLink } from 'react-router-dom';
 
 const Header = () => {
-  const dispatch = useAppDispatch();
-  const cartCount = useAppSelector((state) => state.cart.count);
-  
-  const goToPage = (page: number) => {
-    dispatch(setPage(page));
-  };
+	const dispatch = useAppDispatch();
+	const cartCount = useAppSelector((state) => state.cart.count);
 
-  return (
-    <>
-      <header className='header'>
-        <nav className='header-container'>
-          <div className='header-logo'>
-            <a href='#'>
-              <img src='/src/assets/header/logo.svg' alt='logo'></img>
-            </a>
-          </div>
-          <div className='header-menu'>
-            <ul className='header-menu-list'>
-              <li>
-                <a href='#' onClick={() => goToPage(1)}>
-                  Home
-                </a>
-              </li>
-              <li>
-                <a
-                  href='#'
-                  className='header-menu-list-selected'
-                  onClick={() => goToPage(2)}
-                >
-                  Menu
-                </a>
-              </li>
-              <li>
-                <a href='#'>Company</a>
-              </li>
-              <li>
-                <a
-                  href='#'
-                  className='header-menu-list-login'
-                  onClick={() => goToPage(0)}
-                >
-                  Login
-                </a>
-              </li>
-            </ul>
-            <div className='cart-container'>
-              <a href='#'>
-                <div className='cart'>
-                  <img src='/src/assets/header/cart.svg' alt='cart'></img>
-                  <span className='cart-quantity' id='cart-quantity'>
-                    {cartCount}
-                  </span>
-                </div>
-              </a>
-            </div>
-          </div>
-        </nav>
-      </header>
-    </>
-  );
+	return (
+		<>
+			<header className="header">
+				<nav className="header-container">
+					<div className="header-logo">
+						<Link to="/intro">
+							<img src="/src/assets/header/logo.svg" alt="logo" />
+						</Link>
+					</div>
+					<div className="header-menu">
+						<ul className="header-menu-list">
+							<li>
+								<NavLink
+									to="/intro"
+									className={({ isActive }) =>
+										isActive ? 'header-menu-list-selected' : ''
+									}
+								>
+									Home
+								</NavLink>
+							</li>
+							<li>
+								<NavLink
+									to="/menu"
+									className={({ isActive }) =>
+										isActive ? 'header-menu-list-selected' : ''
+									}
+								>
+									Menu
+								</NavLink>
+							</li>
+							<li>
+								<NavLink
+									to="/company"
+									className={({ isActive }) =>
+										isActive ? 'header-menu-list-selected' : ''
+									}
+								>
+									Company
+								</NavLink>
+							</li>
+							<li>
+								<NavLink
+									to="/login"
+									className={({ isActive }) =>
+										`header-menu-list-login${isActive ? ' header-menu-list-selected' : ''}`
+									}
+								>
+									Login
+								</NavLink>
+							</li>
+						</ul>
+						<div className="cart-container">
+							<Link to="/order">
+								<div className="cart">
+									<img src="/src/assets/header/cart.svg" alt="cart" />
+									<span className="cart-quantity" id="cart-quantity">
+										{cartCount}
+									</span>
+								</div>
+							</Link>
+						</div>
+					</div>
+				</nav>
+			</header>
+		</>
+	);
 };
 
 export default Header;
