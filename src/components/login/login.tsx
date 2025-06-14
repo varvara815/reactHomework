@@ -6,7 +6,7 @@ import './login.css';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './firebase';
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { login } from '../../store/appSlice';
 
 import { useAppDispatch } from '../../hooks/useAppDispatch';
@@ -15,6 +15,7 @@ const Login = () => {
 	const [email, setUsername] = React.useState('');
 	const [password, setPassword] = React.useState('');
 	const navigate = useNavigate();
+	const location = useLocation();
 	const dispatch = useAppDispatch();
 
 	const handleReset = () => {
@@ -31,9 +32,10 @@ const Login = () => {
 			);
 
 			console.log('User submitted: ', userCredential);
-
 			dispatch(login());
-			navigate(-1);
+
+			const from = location.state?.from || '/intro';
+			navigate(from, { replace: true });
 		} catch (error) {
 			console.log(error);
 		}

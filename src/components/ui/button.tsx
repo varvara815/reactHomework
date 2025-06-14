@@ -16,17 +16,19 @@ const UiButton = ({ text, type, onClick, size }: UiButtonProps) => {
 			case 'placeAnOrder':
 				return 'button_placeAnOrder';
 			case 'submit':
-				return '.button_submit';
+				return 'button_submit';
 			case 'cancel':
-				return '.button_cancel';
-			case 'reset':
+				return 'button_cancel';
+			case 'remove':
+				return 'button_remove';
 			default:
-				return '.button_reset';
+				return 'button_reset';
 		}
 	})();
 
 	return (
 		<button
+			type={type === 'submit' ? 'submit' : 'button'}
 			onClick={onClick}
 			className={`ui-button ${buttonType} ${buttonSize}`}
 		>

@@ -1,5 +1,11 @@
 import './App.css';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import {
+	BrowserRouter,
+	Routes,
+	Route,
+	Navigate,
+	useLocation,
+} from 'react-router-dom';
 import Footer from './components/footer/footer';
 import Header from './components/header/header';
 import Intro from './components/intro/intro';
@@ -11,7 +17,13 @@ import { useAppSelector } from './hooks/useAppSelector';
 
 const PrivateRoute = () => {
 	const isAuthenticated = useAppSelector((state) => state.app.isAuthenticated);
-	return isAuthenticated ? <Order /> : <Navigate to="/login" />;
+	const location = useLocation();
+
+	if (!isAuthenticated) {
+		return <Navigate to="/login" state={{ from: location.pathname }} replace />;
+	}
+
+	return <Order />;
 };
 const App = () => {
 	return (
@@ -23,9 +35,7 @@ const App = () => {
 				<Route path="/intro" element={<Intro />} />
 				<Route path="/menu" element={<Menu />} />
 				<Route path="/company" element={<Company />} />
-				<Route element={<PrivateRoute />}>
-					<Route path="/order" element={<Order />} />
-				</Route>
+				<Route path="/order" element={<PrivateRoute />} />
 			</Routes>
 			<Footer />
 		</BrowserRouter>

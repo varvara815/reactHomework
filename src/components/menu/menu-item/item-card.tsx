@@ -1,6 +1,6 @@
 import './item-card.css';
 import { useAppDispatch } from '../../../hooks/useAppDispatch';
-import { incrementCartCount } from '../../../store/cartSlice';
+import { addToCart } from '../../../store/cartSlice';
 import UiButton from '../../ui/button';
 
 import type { ItemCardProps } from '../../../../custom';
@@ -16,8 +16,13 @@ const ItemCard = ({
 
 	const handleAddToCart = () => {
 		const quantityElement = document.getElementById(id) as HTMLInputElement;
-		const quantity = quantityElement.value;
-		dispatch(incrementCartCount(+quantity));
+		const quantity = Number.parseInt(quantityElement.value, 10);
+		dispatch(
+			addToCart({
+				id,
+				quantity,
+			}),
+		);
 	};
 
 	return (

@@ -4,19 +4,6 @@ export interface CategoryFilterProps {
 	setActiveCategoryIndex: (index: number) => void;
 }
 
-export interface HeaderProps {
-	cartCount: number;
-	goToPage?: (page: number) => void;
-}
-
-export interface IntroProps {
-	showIntro: () => void;
-}
-
-export interface LoginProps {
-	onSuccessfulSubmit?: () => void;
-}
-
 export interface UiButtonProps {
 	text: string;
 	type: string;
@@ -33,9 +20,6 @@ export interface ItemCardProps {
 	addToCart: (quantity: number) => void;
 }
 
-export interface MenuProps {
-	addToCart: (quantity: number) => void;
-}
 
 export interface Meal {
 	id: string;
@@ -44,10 +28,14 @@ export interface Meal {
 	price: number;
 	instructions: string;
 	img: string;
-	[key: string]: any;
+	[key: string]: unknown;
 }
 
-interface MealsState {
+export interface NavigationItem {
+  path: string;
+  title: string;
+}
+export interface MealsState {
 	allMeals: Meal[];
 	loading: boolean;
 	error: string | null;
@@ -67,27 +55,32 @@ export interface FetchResponse<T> {
 	error: string | null;
 }
 
-export interface CartState {
-	count: number;
-}
-
 export interface AppState {
   isAuthenticated: boolean;
 }
+
+export interface CartState {
+  items: Record<string, number>;
+  count: number;
+}
+
+
+
 export interface RootState {
-	app: {
-		displayPage: number;
-	};
-	cart: {
-		count: number;
-	};
-	meals: {
-		allMeals: Meal[];
-		loading: boolean;
-		error: string | null;
-		activeCategoryIndex: number;
-		amountOfMeals: number;
-		mealsChunkSize: number;
-	};
-	
+  app: {
+    displayPage: number;
+    isAuthenticated: boolean;
+  };
+  cart: {
+    items: Record<string, number>;
+    count: number;
+  };
+  meals: {
+    allMeals: Meal[];
+    loading: boolean;
+    error: string | null;
+    activeCategoryIndex: number;
+    amountOfMeals: number;
+    mealsChunkSize: number;
+  };
 }
