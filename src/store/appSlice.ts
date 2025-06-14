@@ -1,22 +1,19 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AppState } from '../../custom';
+import { createSlice } from '@reduxjs/toolkit';
+import type { AppState } from '../../custom';
 
 const initialState: AppState = {
-  displayPage: 0,
+	isAuthenticated: false,
 };
 
 const appSlice = createSlice({
-  name: 'app',
-  initialState,
-  reducers: {
-    setPage: (state, action: PayloadAction<number>) => {
-      state.displayPage = action.payload;
-    },
-    nextPage: (state) => {
-      state.displayPage += 1;
-    },
-  },
+	name: 'app',
+	initialState,
+	reducers: {
+		login: (state) => {
+			state.isAuthenticated = true;
+		}
+	},
 });
 
-export const { setPage, nextPage } = appSlice.actions;
+export const { login } = appSlice.actions;
 export default appSlice.reducer;

@@ -1,0 +1,21 @@
+.company-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 140px 20px;
+  text-align: center;
+}
+
+.company-container h2 {
+    margin: 40px 0 20px 0;
+    text-align: center;
+    color: var(--color-accent);
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 55px;
+    letter-spacing: 1.65px;
+}
+
+.company-container p {
+  font-size: 18px;
+  line-height: 1.6;
+}

@@ -1,62 +1,62 @@
 .menu-title-container {
-  padding: 150px 20px 0px 20px;
-  text-align: center;
-  background: white;
-  background-image: url(src/assets/menu/background.svg),
-    linear-gradient(to bottom, #f5fbfc 0%, #f5fbfc 100%);
-  background-size: cover, 100% 10%;
-  background-position: center top, bottom;
-  background-repeat: no-repeat, no-repeat;
+	padding: 150px 20px 0px 20px;
+	text-align: center;
+	background: white;
+	background-image: url(src/assets/menu/background.svg),
+		linear-gradient(to bottom, #f5fbfc 0%, #f5fbfc 100%);
+	background-size: cover, 100% 10%;
+	background-position: center top, bottom;
+	background-repeat: no-repeat, no-repeat;
 }
 
 .menu-title {
-  font-size: 50px;
-  color: var(--color-accent);
-  font-weight: 400;
-  line-height: 55px;
-  letter-spacing: 1.65px;
-  margin: 0;
+	font-size: 50px;
+	color: var(--color-accent);
+	font-weight: 400;
+	line-height: 55px;
+	letter-spacing: 1.65px;
+	margin: 0;
 }
 
 .menu-title-text {
-  display: inline-block;
-  font-size: 16px;
-  line-height: 27px;
-  letter-spacing: 0.36px;
-  color: var(--color-text);
-  max-width: 466px;
-  margin: 0;
-  padding: 26px 0px 50px 0px;
+	display: inline-block;
+	font-size: 16px;
+	line-height: 27px;
+	letter-spacing: 0.36px;
+	color: var(--color-text);
+	max-width: 466px;
+	margin: 0;
+	padding: 26px 0px 50px 0px;
 }
 
 .menu-title-highlight {
-  color: var(--color-accent);
-  cursor: pointer;
+	color: var(--color-accent);
+	cursor: pointer;
 }
 
 .menu-wrapper {
-  display: flex;
-  justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 
 .menu-items {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  max-width: var(--width-breakpoint-0);
-  @media (max-width: 1200px) {
-    grid-template-columns: 1fr;
-  }
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+	max-width: var(--width-breakpoint-0);
+	@media (max-width: 1200px) {
+		grid-template-columns: 1fr;
+	}
 }
 
 .menu-see-more-container {
-  padding: 64px 0 140px 0;
+	padding: 64px 0 140px 0;
 }
 
 .menu-see-more {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 466px;
-  margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	max-width: 466px;
+	margin: 0 auto;
 }
