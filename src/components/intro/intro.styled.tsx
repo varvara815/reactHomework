@@ -85,11 +85,11 @@ const IntroDeliveryImage = styled.div`
 `;
 
 export {
-  IntroContainer,
-  IntroTitle,
-  IntroText,
-  IntroButtonWrapper,
-  IntroRating,
-  IntroTrustpilot,
-  IntroDeliveryImage,
+	IntroContainer,
+	IntroTitle,
+	IntroText,
+	IntroButtonWrapper,
+	IntroRating,
+	IntroTrustpilot,
+	IntroDeliveryImage,
 };

@@ -91,6 +91,5 @@
 .menu-item-add-to-cart input::-webkit-outer-spin-button,
 .menu-item-add-to-cart input::-webkit-inner-spin-button {
   -webkit-appearance: none;
-  appearance: none;
   margin: 0;
 }
