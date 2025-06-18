@@ -3,21 +3,23 @@ import { useAppSelector } from '../../hooks/useAppSelector';
 import { Link, NavLink } from 'react-router-dom';
 import type { NavigationItem } from '../../../custom';
 import { navigation } from '../constans';
+import { useTheme } from '../../contexts/ThemeContext';
 
 const Header = () => {
 	const cartCount = useAppSelector((state) => state.cart.count);
+	const { theme, toggleTheme } = useTheme();
 
 	return (
 		<>
-			<header className="header">
-				<nav className="header-container">
-					<div className="header-logo">
-						<Link to="/intro">
-							<img src="/src/assets/header/logo.svg" alt="logo" />
+			<header className='header'>
+				<nav className='header-container'>
+					<div className='header-logo'>
+						<Link to='/intro'>
+							<img src='/src/assets/header/logo.svg' alt='logo' />
 						</Link>
 					</div>
-					<div className="header-menu">
-						<ul className="header-menu-list">
+					<div className='header-menu'>
+						<ul className='header-menu-list'>
 							{navigation.map((item: NavigationItem) => (
 								<li key={item.path}>
 									<NavLink
@@ -31,11 +33,20 @@ const Header = () => {
 								</li>
 							))}
 						</ul>
-						<div className="cart-container">
-							<Link to="/order">
-								<div className="cart">
-									<img src="/src/assets/header/cart.svg" alt="cart" />
-									<span className="cart-quantity" id="cart-quantity">
+						<button
+							className='theme-toggle'
+							onClick={toggleTheme}
+							aria-label='Switch theme'
+							type='button'
+						>
+							{theme === 'light' ? '◐' : '◑'}
+						</button>
+
+						<div className='cart-container'>
+							<Link to='/order'>
+								<div className='cart'>
+									<img src='/src/assets/header/cart.svg' alt='cart' />
+									<span className='cart-quantity' id='cart-quantity'>
 										{cartCount}
 									</span>
 								</div>

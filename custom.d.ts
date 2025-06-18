@@ -64,7 +64,12 @@ export interface CartState {
   count: number;
 }
 
+export type Theme = 'light' | 'dark';
 
+export interface ThemeContextType {
+	theme: Theme;
+	toggleTheme: () => void;
+}
 
 export interface RootState {
   app: {

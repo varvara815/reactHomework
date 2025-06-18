@@ -1,28 +1,96 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
 :root {
-	--color-text: #546285;
+	/* Common variables */
 	--color-accent: #35b8be;
-	--color-text-button: #222222;
 	--width-breakpoint-0: 1200px;
 	--width-breakpoint-1: 1024px;
 	--width-breakpoint-2: 768px;
 	--width-breakpoint-3: 480px;
 	--width-breakpoint-4: 320px;
+
+	/* Light theme (default) */
+	--color-text: #546285;
+	--color-text-default: #222222;
+	--background-color: #f5fbfc;
+	--component-background: #ffffff;
+	--color-text-dark: #08090a;
+	--shadow-color: rgba(0, 0, 0, 0.1);
+
+	/* Input variables - light theme */
+	--input-background: #fafafa;
+	--input-text-color: #000000;
+	--input-border-color: #dddddd;
+
+	/* Image paths - light theme */
+	--bg-intro-image: url(/src/assets/intro/bgIntro.png);
+	--menu-background-image: url(/src/assets/menu/background.svg);
+	--trustpilot-image: url(/src/assets/intro/trustpilot.svg);
+	--footer-background-image: url(/src/assets/footer/background.svg);
+	--footer-instagram-image: url(/src/assets/footer/instagram.svg);
+	--footer-twitter-image: url(/src/assets/footer/twitter.svg);
+	--footer-youtube-image: url(/src/assets/footer/youtube.svg);
+}
+
+[data-theme='dark'] {
+	/* Dark theme */
+	--color-text: #cad2de;
+	--color-text-default: #ffffff;
+	--background-color: #273b42;
+	--component-background: #374952;
+	--color-text-dark: #ffffff;
+	--shadow-color: rgba(255, 255, 255, 0.201);
+
+	/* Input variables - dark theme */
+	--input-background: #33444d;
+	--input-text-color: #e1e5ee;
+	--input-border-color: #696969;
+
+	/* Image paths - dark theme */
+	--bg-intro-image: url(/src/assets/intro/dark/bgIntroDark.png);
+	--menu-background-image: url(/src/assets/menu/dark/backgroundDark.svg);
+	--trustpilot-image: url(/src/assets/intro/dark/trustpilotDark.svg);
+	--footer-background-image: url(/src/assets/footer/dark/backgroundDark.svg);
+	--footer-instagram-image: url(/src/assets/footer/dark/instagramDark.svg);
+	--footer-twitter-image: url(/src/assets/footer/dark/twitterDark.svg);
+	--footer-youtube-image: url(/src/assets/footer/dark/youtubeDark.svg);
+}
+
+[data-theme='dark'] {
+	--color-text: #cad2de;
+	--color-text-default: #ffffff;
+	--background-color: #273b42;
+	--component-background: #374952;
+	--color-text-dark: #ffffff;
+	--shadow-color: rgba(255, 255, 255, 0.201);
+
+	--input-background: #33444d;
+	--input-text-color: #e1e5ee;
+	--input-border-color: #696969;
+
+	--menu-background-image: url(/src/assets/menu/dark/backgroundDark.svg);
+
+	--bg-intro-image: url(/src/assets/intro/dark/bgIntroDark.png);
+	--trustpilot-image: url(/src/assets/intro/dark/trustpilotDark.svg);
+
+	--footer-background-image: url(/src/assets/footer/dark/backgroundDark.svg);
+	--footer-instagram-image: url(/src/assets/footer/dark/instagramDark.svg);
+	--footer-twitter-image: url(/src/assets/footer/dark/twitterDark.svg);
+	--footer-youtube-image: url(/src/assets/footer/dark/youtubeDark.svg);
 }
 
 body {
 	min-width: 480px;
-	background: #f5fbfc;
+	background: var(--background-color);
 	color: var(--color-text);
 	font-weight: 400;
-	font-family: "Inter", sans-serif;
+	font-family: 'Inter', sans-serif;
 	margin: 0;
 }
 
 a {
 	text-decoration: none;
-	color: #28224b;
+	color: var(--color-text);
 	font-weight: 400;
 	font-size: 16px;
 	line-height: 20px;

@@ -1,74 +1,74 @@
 .ui-button {
-  font-size: 16px;
-  line-height: 20px;
-  letter-spacing: 0px;
-  cursor: pointer;
-  padding: 16px 46px;
-  transition: all 0.2s ease, transform 0.1s ease;
-  border-radius: 6px;
-  background-color: var(--color-accent);
-  color: #ffffff;
-  border: 1px solid var(--color-accent);
-  transform: scale(1);
+	font-size: 16px;
+	line-height: 20px;
+	letter-spacing: 0px;
+	cursor: pointer;
+	padding: 16px 46px;
+	transition: all 0.2s ease, transform 0.1s ease;
+	border-radius: 6px;
+	background-color: var(--color-accent);
+	color: #ffffff;
+	border: 1px solid var(--color-accent);
+	transform: scale(1);
 
-  @media (max-width: 1200px) {
-    width: 100%;
-  }
+	@media (max-width: 1200px) {
+		width: 100%;
+	}
 
-  @media (max-width: 768px) {
-    width: 100%;
-  }
+	@media (max-width: 768px) {
+		width: 100%;
+	}
 }
 
 .ui-button:active {
-  transform: scale(0.95);
+	transform: scale(0.95);
 }
 
 .button_filter {
-  &:nth-child(2) {
-    padding: 16px 40px;
-  }
+	&:nth-child(2) {
+		padding: 16px 40px;
+	}
 
-  &:nth-child(3) {
-    padding: 16px 32px;
-  }
+	&:nth-child(3) {
+		padding: 16px 32px;
+	}
 }
 
 .button_addToCart {
-  padding: 9px 27px;
-  letter-spacing: 1.36px;
-  line-height: 27px;
+	padding: 9px 27px;
+	letter-spacing: 1.36px;
+	line-height: 27px;
 }
 
 .button_seeMore {
-  padding: 16px 36px;
-  font-size: 17px;
+	padding: 16px 36px;
+	font-size: 17px;
 }
 
 .button_placeAnOrder {
-  padding: 19px 35px 21px 35px;
-  font-size: 17px;
+	padding: 19px 35px 21px 35px;
+	font-size: 17px;
 }
 
 .button_submit {
-  padding: 16px 46px;
-  font-size: 16px;
+	padding: 16px 46px;
+	font-size: 16px;
 }
 
 .button_cancel {
-  padding: 16px 35px 16px 40px;
-  font-size: 16px;
-  color: #222222;
+	padding: 16px 35px 16px 40px;
+	font-size: 16px;
+	color: #222222;
 }
 
 .button_remove {
-  padding: 6px 24px 12px 24px;
-  font-size: 24px;
-  line-height: 27px;
+	padding: 6px 24px 12px 24px;
+	font-size: 24px;
+	line-height: 27px;
 }
 
 .button_inactive {
-  color: var(--color-text-button);
-  background-color: transparent;
-  border: 1px solid rgba(97, 114, 131, 0.2);
+	color: var(--color-text-default);
+	background-color: transparent;
+	border: 1px solid rgba(97, 114, 131, 0.2);
 }
