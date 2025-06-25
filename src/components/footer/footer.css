@@ -1,7 +1,7 @@
 footer {
 	max-width: 1440px;
 	margin: 0 auto;
-	background-image: url(src/assets/footer/background.svg);
+	background-image: var(--footer-background-image);
 	background-position: center bottom;
 	background-repeat: no-repeat;
 }
@@ -72,7 +72,7 @@ footer {
 	letter-spacing: 1.5px;
 	text-transform: uppercase;
 	font-weight: 400;
-	color: #08090a;
+	color: var(--color-text-default);
 	padding-bottom: 28px;
 }
 
@@ -95,11 +95,10 @@ footer {
 .footer-top-menu-list-item a {
 	color: var(--color-text);
 	font-size: 15px;
-	transition: color 0.2s ease;
 }
 
 .footer-top-menu-list-item a:hover {
-	color: #08090a;
+	color: var(--color-text-dark);
 }
 
 hr {
@@ -132,7 +131,7 @@ hr {
 .footer-bottom-text p {
 	font-size: 15px;
 	line-height: 20px;
-	color: #353448;
+	color: var(--color-text-default);
 	margin: 0;
 	text-align: center;
 }
@@ -147,6 +146,18 @@ hr {
 
 .footer-bottom-icons img {
 	padding-right: 24px;
+}
+
+.footer-bottom-icons a img[alt='instagram'] {
+	content: var(--footer-instagram-image);
+}
+
+.footer-bottom-icons a img[alt='twitter'] {
+	content: var(--footer-twitter-image);
+}
+
+.footer-bottom-icons a img[alt='youtube'] {
+	content: var(--footer-youtube-image);
 }
 
 .footer-bottom-icons img:last-child {

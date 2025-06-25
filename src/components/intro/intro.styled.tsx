@@ -4,7 +4,7 @@ const IntroContainer = styled.main`
   display: flex;
   justify-content: center;
   padding: 100px 0px 140px 0px;
-  background: top / cover no-repeat url(/src/assets/intro/bgIntro.png) #ffffff;
+  background: top / cover no-repeat var(--bg-intro-image) var(--component-background);
   max-height: 1440px;
   background-size: 100% 820px;
   @media (max-width: 1200px) {
@@ -19,7 +19,7 @@ const IntroTitle = styled.h2`
   padding: 57px 0px 27px 0px;
   max-width: 606px;
   font-size: 60px;
-  color: #08090a;
+  color: var(--color-text-dark);
   line-height: 60px;
   letter-spacing: 1.8px;
   font-weight: 400;
@@ -55,7 +55,7 @@ const IntroRating = styled.p`
   margin: 0px;
   padding: 10px 0px 0px 0px;
   font-size: 16px;
-  color: #08090a;
+  color: var(--color-text-dark);
   line-height: 20px;
   span {
     color: var(--color-accent);
@@ -69,6 +69,11 @@ const IntroRating = styled.p`
 
 const IntroTrustpilot = styled.div`
   padding: 30px 0px 0px 0px;
+  
+  img {
+    content: var(--trustpilot-image);
+  }
+  
   @media (max-width: 1200px) {
     text-align: center;
     padding-bottom: 10px;

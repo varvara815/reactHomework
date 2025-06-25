@@ -1,9 +1,13 @@
 .menu-title-container {
 	padding: 150px 20px 0px 20px;
 	text-align: center;
-	background: white;
-	background-image: url(src/assets/menu/background.svg),
-		linear-gradient(to bottom, #f5fbfc 0%, #f5fbfc 100%);
+	background: var(--component-background);
+	background-image: var(--menu-background-image),
+		linear-gradient(
+			to bottom,
+			var(--component-background) 0%,
+			var(--component-background) 100%
+		);
 	background-size: cover, 100% 10%;
 	background-position: center top, bottom;
 	background-repeat: no-repeat, no-repeat;

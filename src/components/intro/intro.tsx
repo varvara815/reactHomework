@@ -26,18 +26,19 @@ const Intro = () => {
 				</IntroText>
 				<IntroButtonWrapper>
 					<UiButton
-						text="Place an Order"
-						type="button"
-						size="placeAnOrder"
+						text='Place an Order'
+						type='button'
+						size='placeAnOrder'
 						onClick={() => navigate('/menu')}
 					/>
 				</IntroButtonWrapper>
 
 				<IntroTrustpilot>
-					<Link to="/intro">
-						<img src="/src/assets/intro/trustpilot.svg" alt="Trustpilot" />
+					<Link to='/intro'>
+						<img alt='Trustpilot' />
 					</Link>
 				</IntroTrustpilot>
+
 				<IntroRating>
 					<span>4.8 out of 5</span> based on 2000+ reviews
 				</IntroRating>

@@ -1,5 +1,5 @@
 header {
-	background-color: #ffffff;
+	background-color: var(--component-background);
 	width: 100%;
 	margin: 0;
 }
@@ -9,7 +9,7 @@ header {
 	justify-content: space-between;
 	align-items: center;
 	padding: 20px 120px 8px 120px;
-	background-color: #ffffff;
+	background-color: var(--component-background);
 	max-width: var(--width-breakpoint-0);
 	margin: 0 auto;
 	@media (max-width: 768px) {
@@ -42,13 +42,13 @@ header {
 		padding: 20px 4px;
 		transition: color 0.2s ease;
 		font-size: 15px;
+		color: var(--color-text-default);
 		&:hover,
 		&.header-menu-list-selected {
 			color: var(--color-accent);
 		}
 	}
 }
-
 
 .cart {
 	display: flex;
@@ -71,9 +71,22 @@ header {
 	justify-content: center;
 	align-items: center;
 	border-radius: 50%;
-	background-color: #ffffff;
+	background-color: var(--component-background);
 	font-size: 13px;
 	line-height: 18px;
 	color: var(--color-accent);
-	box-shadow: 1px 0px 16px rgba(0, 0, 0, 0.1);
+	box-shadow: 1px 0px 16px var(--shadow-color);
+}
+
+.theme-toggle {
+	display: flex;
+	align-items: center;
+	margin-right: 15px;
+	cursor: pointer;
+	background: none;
+	border: none;
+	color: var(--color-text-default);
+	font-size: 24px;
+	padding: 5px;
+	border-radius: 50%;
 }
