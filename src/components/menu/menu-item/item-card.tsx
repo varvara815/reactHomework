@@ -1,9 +1,9 @@
-import './item-card.css';
-import { useAppDispatch } from '../../../hooks/useAppDispatch';
-import { addToCart } from '../../../store/cartSlice';
-import UiButton from '../../ui/button';
+import "./item-card.css";
+import { useAppDispatch } from "../../../hooks/useAppDispatch";
+import { addToCart } from "../../../store/cartSlice";
+import UiButton from "../../ui/button";
 
-import type { ItemCardProps } from '../../../../custom';
+import type { ItemCardProps } from "../../../../custom";
 
 const ItemCard = ({
 	title,
@@ -11,12 +11,23 @@ const ItemCard = ({
 	description,
 	imageUrl,
 	id,
-}: Omit<ItemCardProps, 'addToCart'>) => {
+}: Omit<ItemCardProps, "addToCart">) => {
 	const dispatch = useAppDispatch();
+
+	const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		let value = parseInt(e.target.value);
+
+		if (isNaN(value) || value < 1) {
+			e.target.value = "1";
+		} else if (value > 99) {
+			e.target.value = "99";
+		}
+	};
 
 	const handleAddToCart = () => {
 		const quantityElement = document.getElementById(id) as HTMLInputElement;
-		const quantity = Number.parseInt(quantityElement.value, 10);
+		let quantity = Number.parseInt(quantityElement.value, 10);
+
 		dispatch(
 			addToCart({
 				id,
@@ -42,7 +53,15 @@ const ItemCard = ({
 					{description}
 				</p>
 				<div className="menu-item-add-to-cart">
-					<input type="number" id={id} min="1" max="99" defaultValue="1" />
+					<input
+						type="number"
+						id={id}
+						min="1"
+						max="99"
+						defaultValue="1"
+						onChange={handleQuantityChange}
+						onBlur={handleQuantityChange}
+					/>
 					<UiButton
 						text="Add to cart"
 						type="button"

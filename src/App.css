@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 
 :root {
 	/* Common variables */
@@ -23,16 +23,14 @@
 	--input-border-color: #dddddd;
 
 	/* Image paths - light theme */
-	--bg-intro-image: url(/src/assets/intro/bgIntro.png);
-	--menu-background-image: url(/src/assets/menu/background.svg);
 	--trustpilot-image: url(/src/assets/intro/trustpilot.svg);
-	--footer-background-image: url(/src/assets/footer/background.svg);
+	--footer-background-image: #e5f1f3;
 	--footer-instagram-image: url(/src/assets/footer/instagram.svg);
 	--footer-twitter-image: url(/src/assets/footer/twitter.svg);
 	--footer-youtube-image: url(/src/assets/footer/youtube.svg);
 }
 
-[data-theme='dark'] {
+[data-theme="dark"] {
 	/* Dark theme */
 	--color-text: #cad2de;
 	--color-text-default: #ffffff;
@@ -47,44 +45,19 @@
 	--input-border-color: #696969;
 
 	/* Image paths - dark theme */
-	--bg-intro-image: url(/src/assets/intro/dark/bgIntroDark.png);
-	--menu-background-image: url(/src/assets/menu/dark/backgroundDark.svg);
 	--trustpilot-image: url(/src/assets/intro/dark/trustpilotDark.svg);
-	--footer-background-image: url(/src/assets/footer/dark/backgroundDark.svg);
-	--footer-instagram-image: url(/src/assets/footer/dark/instagramDark.svg);
-	--footer-twitter-image: url(/src/assets/footer/dark/twitterDark.svg);
-	--footer-youtube-image: url(/src/assets/footer/dark/youtubeDark.svg);
-}
-
-[data-theme='dark'] {
-	--color-text: #cad2de;
-	--color-text-default: #ffffff;
-	--background-color: #273b42;
-	--component-background: #374952;
-	--color-text-dark: #ffffff;
-	--shadow-color: rgba(255, 255, 255, 0.201);
-
-	--input-background: #33444d;
-	--input-text-color: #e1e5ee;
-	--input-border-color: #696969;
-
-	--menu-background-image: url(/src/assets/menu/dark/backgroundDark.svg);
-
-	--bg-intro-image: url(/src/assets/intro/dark/bgIntroDark.png);
-	--trustpilot-image: url(/src/assets/intro/dark/trustpilotDark.svg);
-
-	--footer-background-image: url(/src/assets/footer/dark/backgroundDark.svg);
+	--footer-background-image: #173438;
 	--footer-instagram-image: url(/src/assets/footer/dark/instagramDark.svg);
 	--footer-twitter-image: url(/src/assets/footer/dark/twitterDark.svg);
 	--footer-youtube-image: url(/src/assets/footer/dark/youtubeDark.svg);
 }
 
 body {
-	min-width: 480px;
+	/* min-width: 480px; */
 	background: var(--background-color);
 	color: var(--color-text);
 	font-weight: 400;
-	font-family: 'Inter', sans-serif;
+	font-family: "Inter", sans-serif;
 	margin: 0;
 }
 
@@ -98,4 +71,36 @@ a {
 
 li {
 	list-style: none;
+}
+
+.background-main-top {
+	fill: var(--background-color);
+}
+
+.background-main-top-container {
+	background-color: var(--component-background);
+	line-height: 0;
+}
+
+footer {
+	position: relative;
+}
+.footer-bg {
+	position: absolute;
+	bottom: 0;
+	z-index: -1;
+}
+.footer-bg path {
+	fill: var(--footer-background-image);
+}
+
+.background-intro-top-container {
+	background-color: var(--component-background);
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: -1;
+}
+.background-intro-top {
+	fill: var(--background-color);
 }

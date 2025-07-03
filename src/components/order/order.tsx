@@ -1,14 +1,15 @@
-import './order.css';
-import { useAppDispatch } from '../../hooks/useAppDispatch';
-import { useAppSelector } from '../../hooks/useAppSelector';
+import "./order.css";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { useAppSelector } from "../../hooks/useAppSelector";
 import {
 	removeFromCart,
 	updateQuantity,
 	clearCart,
-} from '../../store/cartSlice';
-import UiButton from '../ui/button';
-import { useNavigate } from 'react-router-dom';
-import React from 'react';
+} from "../../store/cartSlice";
+import UiButton from "../ui/button";
+import { useNavigate } from "react-router-dom";
+import React from "react";
+import Background01 from "../ui/background01";
 
 const Order = () => {
 	const { items } = useAppSelector((state) => state.cart);
@@ -19,7 +20,7 @@ const Order = () => {
 
 	React.useEffect(() => {
 		if (!isAuthenticated) {
-			navigate('/login');
+			navigate("/login");
 		}
 	}, [isAuthenticated, navigate]);
 
@@ -41,11 +42,26 @@ const Order = () => {
 		}
 	};
 
-	const handleOrder = (e: React.FormEvent) => {
+	const handleOrder = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		alert('Order placed successfully!');
+
+		const formElement = e.currentTarget as HTMLFormElement;
+		const street = formElement.street.value;
+		const house = formElement.house.value;
+
+		let totalAmount = 0;
+		itemIds.forEach((id) => {
+			const itemData = getItemData(id);
+			if (itemData) {
+				totalAmount += itemData.price * items[id];
+			}
+		});
+
+		const message = `Order placed successfully!\n\nTotal amount: $${totalAmount.toFixed(2)} USD\nDelivery address: ${street}, ${house}`;
+
+		alert(message);
 		dispatch(clearCart());
-		navigate('/menu');
+		navigate("/menu");
 	};
 
 	const itemIds = Object.keys(items);
@@ -53,6 +69,7 @@ const Order = () => {
 	if (itemIds.length === 0) {
 		return (
 			<>
+				<Background01 />
 				<div className="order-title-container">
 					<h1 className="order-title">Your cart is empty</h1>
 				</div>
@@ -63,7 +80,7 @@ const Order = () => {
 							text="Go to Menu"
 							type="button"
 							size="button_placeAnOrder"
-							onClick={() => navigate('/menu')}
+							onClick={() => navigate("/menu")}
 						/>
 					</div>
 				</div>
@@ -73,6 +90,7 @@ const Order = () => {
 
 	return (
 		<>
+			<Background01 />
 			<div className="order-title-container">
 				<h2 className="order-title">Finish your order</h2>
 			</div>
@@ -104,7 +122,7 @@ const Order = () => {
 										value={items[id]}
 										onChange={(e) => handleQuantityChange(id, e)}
 										min="1"
-										max="99"
+										max="9999"
 									/>
 									<div>
 										<UiButton

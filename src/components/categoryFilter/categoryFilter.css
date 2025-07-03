@@ -1,5 +1,8 @@
 .menu-buttons-container {
 	padding-bottom: 41px;
+	@media (max-width: 1200px) {
+		margin: 0 5%;
+	}
 }
 
 .menu-buttons {

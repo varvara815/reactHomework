@@ -1,21 +1,23 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
-import CategoryFilter from '../categoryFilter/categoryFilter';
-import UiButton from '../ui/button';
-import ItemCard from './menu-item/item-card';
+import CategoryFilter from "../categoryFilter/categoryFilter";
+import UiButton from "../ui/button";
+import ItemCard from "./menu-item/item-card";
 
-import { useAppDispatch } from '../../hooks/useAppDispatch';
-import { useAppSelector } from '../../hooks/useAppSelector';
+import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { useAppSelector } from "../../hooks/useAppSelector";
 
 import {
 	fetchMeals,
 	increaseAmountOfMeals,
 	setActiveCategoryIndex,
-} from '../../store/mealsSlice';
+} from "../../store/mealsSlice";
 
-import type { Meal } from '../../../custom';
+import type { Meal } from "../../../custom";
 
-import './menu.css';
+import "./menu.css";
+
+import Background01 from "../ui/background01";
 
 const Menu = () => {
 	const dispatch = useAppDispatch();
@@ -46,6 +48,7 @@ const Menu = () => {
 
 	return (
 		<>
+			<Background01 />
 			<div className="menu-title-container">
 				<h2 className="menu-title">Browse our menu</h2>
 				<p className="menu-title-text">

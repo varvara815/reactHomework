@@ -1,15 +1,12 @@
 .menu-title-container {
-	padding: 150px 20px 0px 20px;
+	padding: 60px 20px 0px 20px;
 	text-align: center;
-	background: var(--component-background);
-	background-image: var(--menu-background-image),
-		linear-gradient(
-			to bottom,
-			var(--component-background) 0%,
-			var(--component-background) 100%
-		);
-	background-size: cover, 100% 10%;
-	background-position: center top, bottom;
+	background-size:
+		cover,
+		100% 10%;
+	background-position:
+		center top,
+		bottom;
 	background-repeat: no-repeat, no-repeat;
 }
 
@@ -41,6 +38,9 @@
 .menu-wrapper {
 	display: flex;
 	justify-content: center;
+	@media (max-width: 1200px) {
+		margin: 0 5%;
+	}
 }
 
 .menu-items {
@@ -55,6 +55,9 @@
 
 .menu-see-more-container {
 	padding: 64px 0 140px 0;
+	@media (max-width: 1200px) {
+		margin: 0 5%;
+	}
 }
 
 .menu-see-more {

@@ -1,5 +1,5 @@
-import UiButton from '../ui/button';
-import { Link, useNavigate } from 'react-router-dom';
+import UiButton from "../ui/button";
+import { Link, useNavigate } from "react-router-dom";
 import {
 	IntroButtonWrapper,
 	IntroContainer,
@@ -8,44 +8,52 @@ import {
 	IntroText,
 	IntroTitle,
 	IntroTrustpilot,
-} from './intro.styled';
+	IntroWrapper,
+} from "./intro.styled";
+
+import Background03 from "../ui/background03";
 
 const Intro = () => {
 	const navigate = useNavigate();
 
 	return (
-		<IntroContainer>
-			<div>
-				<IntroTitle>
-					Beautiful food & takeaway, <span>delivered</span> to your door.
-				</IntroTitle>
-				<IntroText>
-					Lorem Ipsum is simply dummy text of the printing and typesetting
-					industry. Lorem Ipsum has been the industry's standard dummy text ever
-					since the 1500.
-				</IntroText>
-				<IntroButtonWrapper>
-					<UiButton
-						text='Place an Order'
-						type='button'
-						size='placeAnOrder'
-						onClick={() => navigate('/menu')}
-					/>
-				</IntroButtonWrapper>
+		<>
+			<IntroWrapper>
+				<Background03 />
+				<IntroContainer>
+					<div>
+						<IntroTitle>
+							Beautiful food & takeaway, <span>delivered</span> to your door.
+						</IntroTitle>
+						<IntroText>
+							Lorem Ipsum is simply dummy text of the printing and typesetting
+							industry. Lorem Ipsum has been the industry's standard dummy text
+							ever since the 1500.
+						</IntroText>
+						<IntroButtonWrapper>
+							<UiButton
+								text="Place an Order"
+								type="button"
+								size="placeAnOrder"
+								onClick={() => navigate("/menu")}
+							/>
+						</IntroButtonWrapper>
 
-				<IntroTrustpilot>
-					<Link to='/intro'>
-						<img alt='Trustpilot' />
-					</Link>
-				</IntroTrustpilot>
+						<IntroTrustpilot>
+							<Link to="/intro">
+								<img alt="Trustpilot" />
+							</Link>
+						</IntroTrustpilot>
 
-				<IntroRating>
-					<span>4.8 out of 5</span> based on 2000+ reviews
-				</IntroRating>
-			</div>
+						<IntroRating>
+							<span>4.8 out of 5</span> based on 2000+ reviews
+						</IntroRating>
+					</div>
 
-			<IntroDeliveryImage />
-		</IntroContainer>
+					<IntroDeliveryImage />
+				</IntroContainer>
+			</IntroWrapper>
+		</>
 	);
 };
 

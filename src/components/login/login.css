@@ -1,15 +1,11 @@
 .login-title-container {
-	padding: 155px 0 53px 0;
-
-	background: var(--component-background);
-	background-image: var(--menu-background-image),
-		linear-gradient(
-			to bottom,
-			var(--component-background) 0%,
-			var(--component-background) 100%
-		);
-	background-size: cover, 100% 10%;
-	background-position: center top, bottom;
+	padding: 95px 0 53px 0;
+	background-size:
+		cover,
+		100% 10%;
+	background-position:
+		center top,
+		bottom;
 	background-repeat: no-repeat, no-repeat;
 }
 
@@ -30,11 +26,13 @@
 	margin: 0 auto 254px auto;
 	max-width: 695px;
 	padding: 37px 0 42px 0;
-	width: 70%;
 
 	background-color: var(--component-background);
 	border: 1px solid rgba(53, 184, 190, 0.15);
 	border-radius: 6px;
+	@media (max-width: 768px) {
+		margin: 0 3%;
+	}
 }
 
 .username-container,
@@ -81,7 +79,7 @@
 	background-color: var(--input-background);
 	border: 1px solid var(--input-border-color);
 	border-radius: 6px;
-	font-family: 'Inter', sans-serif;
+	font-family: "Inter", sans-serif;
 	font-size: 16px;
 	letter-spacing: 0.36px;
 	color: var(--input-text-color);
@@ -92,8 +90,7 @@
 	}
 
 	@media (max-width: 1024px) {
-		min-width: 300px;
-		width: 70%;
+		min-width: 70%;
 	}
 }
 
