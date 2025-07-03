@@ -9,6 +9,9 @@
 	background-color: var(--component-background);
 	border: 1px solid rgba(53, 184, 190, 0.15);
 	border-radius: 6px;
+	@media (max-width: 480px) {
+		padding: 26px 10px;
+	}
 }
 
 .menu-item-img {

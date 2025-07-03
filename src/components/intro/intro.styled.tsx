@@ -1,16 +1,18 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+
+export const IntroWrapper = styled.div`
+  position: relative;
+`;
 
 const IntroContainer = styled.main`
   display: flex;
   justify-content: center;
   padding: 100px 0px 140px 0px;
-  background: top / cover no-repeat var(--bg-intro-image) var(--component-background);
-  max-height: 1440px;
-  background-size: 100% 820px;
   @media (max-width: 1200px) {
     flex-direction: column;
     align-items: center;
     padding: 50px 0px 100px 0px;
+    margin: 0 3%;
   }
 `;
 
@@ -28,6 +30,7 @@ const IntroTitle = styled.h2`
   }
   @media (max-width: 1200px) {
     text-align: center;
+    font-size: 50px;
   }
 `;
 
@@ -41,6 +44,7 @@ const IntroText = styled.p`
   @media (max-width: 1200px) {
     text-align: center;
     margin: 0 auto;
+    font-size: 15px;
   }
 `;
 
@@ -85,7 +89,14 @@ const IntroDeliveryImage = styled.div`
   height: 580px;
   width: 600px;
   @media (max-width: 1200px) {
-    margin-left: 80px;
+    height: 400px;
+    width: 70%;
+    max-width: 500px;
+    margin-left: 10%;
+  }
+  @media (max-width: 768px) {
+    height: 300px;
+    width: 90%;
   }
 `;
 
