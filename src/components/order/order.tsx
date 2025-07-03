@@ -45,9 +45,9 @@ const Order = () => {
 	const handleOrder = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		const formElement = e.currentTarget as HTMLFormElement;
-		const street = formElement.street.value;
-		const house = formElement.house.value;
+		const formData = new FormData(e.currentTarget);
+		const street = (formData.get("street") as string) || "";
+		const house = (formData.get("house") as string) || "";
 
 		let totalAmount = 0;
 		itemIds.forEach((id) => {
@@ -138,7 +138,11 @@ const Order = () => {
 					})}
 				</div>
 
-				<form className="order-form-container" onSubmit={handleOrder}>
+				<form
+					className="order-form-container"
+					onSubmit={handleOrder}
+					// role="form"
+				>
 					<div className="order-form">
 						<div className="form-group">
 							<label className="form-label-street" htmlFor="street">
