@@ -19,6 +19,21 @@ import "./menu.css";
 
 import Background01 from "../ui/background01";
 
+/**
+ * Menu component for displaying and filtering meals
+ *
+ * @component
+ * @description Main menu page that displays categorized meals with filtering functionality.
+ * Fetches meals from the store, allows category filtering, and implements pagination
+ * with a "See more" button. Shows loading and error states appropriately.
+ *
+ * @returns {JSX.Element} Menu page with category filters, meal cards, and pagination
+ *
+ * @example
+ * ```tsx
+ * <Menu />
+ * ```
+ */
 const Menu = () => {
 	const dispatch = useAppDispatch();
 	const { allMeals, activeCategoryIndex, amountOfMeals, loading, error } =
@@ -33,6 +48,9 @@ const Menu = () => {
 	];
 	const mealsCategorySelected = mealsCategories[activeCategoryIndex];
 
+	/**
+	 * Handles "See more" button click to load additional meals
+	 */
 	const handleSeeMore = () => {
 		dispatch(increaseAmountOfMeals());
 	};

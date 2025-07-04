@@ -12,6 +12,22 @@ import { login } from "../../store/appSlice";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import Background01 from "../ui/background01";
 
+/**
+ * Login component for user authentication
+ *
+ * @component
+ * @description Handles user authentication with Firebase. Attempts to sign in
+ * existing users, and if login fails, tries to create a new account automatically.
+ * Includes form validation for email and password fields. Redirects users to
+ * their intended destination after successful authentication.
+ *
+ * @returns {JSX.Element} Login form with email/password fields and authentication logic
+ *
+ * @example
+ * ```tsx
+ * <Login />
+ * ```
+ */
 const Login = () => {
 	const [email, setUsername] = React.useState("");
 	const [password, setPassword] = React.useState("");
@@ -19,18 +35,24 @@ const Login = () => {
 	const location = useLocation();
 	const dispatch = useAppDispatch();
 
+	/**
+	 * Resets the form fields to empty values
+	 */
 	const handleReset = () => {
 		setUsername("");
 		setPassword("");
 	};
 
+	/**
+	 * Handles form submission and authentication process
+	 * First attempts to sign in, if that fails, tries to create a new account
+	 * @async
+	 */
 	const handleSubmit = async () => {
 		try {
-			// Сначала выходим из текущего аккаунта
 			await signOut(auth);
 
 			try {
-				// Пробуем войти
 				const userCredential = await signInWithEmailAndPassword(
 					auth,
 					email,
@@ -42,7 +64,6 @@ const Login = () => {
 				const from = location.state?.from || "/intro";
 				navigate(from, { replace: true });
 			} catch (loginError: any) {
-				// Если вход не удался по любой причине, пробуем создать аккаунт
 				console.log("Login failed, trying to create account:", loginError);
 
 				try {
@@ -57,7 +78,6 @@ const Login = () => {
 					const from = location.state?.from || "/intro";
 					navigate(from, { replace: true });
 				} catch (createError: any) {
-					// Если и создание не удалось, показываем ошибку
 					console.log("Create account failed:", createError);
 
 					if (createError.code === "auth/email-already-in-use") {

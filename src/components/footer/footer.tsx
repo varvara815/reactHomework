@@ -1,5 +1,21 @@
 import "./footer.css";
 import Background02 from "../ui/background02";
+
+/**
+ * Footer component for the application
+ *
+ * @component
+ * @description Renders the site footer with company logo, navigation links,
+ * social media icons, and copyright information. Includes multiple sections
+ * for company links, template information, and external resources.
+ *
+ * @returns {JSX.Element} Footer with logo, navigation links, and social media icons
+ *
+ * @example
+ * ```tsx
+ * <Footer />
+ * ```
+ */
 const Footer = () => {
 	return (
 		<footer>

@@ -11,6 +11,20 @@ import { useNavigate } from "react-router-dom";
 import React from "react";
 import Background01 from "../ui/background01";
 
+/**
+ * Order component for managing cart items and placing orders
+ *
+ * @component
+ * @description Displays cart items, allows quantity modification, item removal,
+ * and order placement with delivery address. Redirects unauthenticated users to login.
+ *
+ * @returns {JSX.Element} Order page with cart items and checkout form or empty cart message
+ *
+ * @example
+ * ```tsx
+ * <Order />
+ * ```
+ */
 const Order = () => {
 	const { items } = useAppSelector((state) => state.cart);
 	const { allMeals } = useAppSelector((state) => state.meals);
@@ -24,14 +38,28 @@ const Order = () => {
 		}
 	}, [isAuthenticated, navigate]);
 
+	/**
+	 * Retrieves meal data by ID from the meals store
+	 * @param {string} id - The meal ID to search for
+	 * @returns {Object|undefined} Meal object or undefined if not found
+	 */
 	const getItemData = (id: string) => {
 		return allMeals.find((meal) => meal.id === id);
 	};
 
+	/**
+	 * Removes an item from the cart
+	 * @param {string} id - The ID of the item to remove
+	 */
 	const handleRemoveItem = (id: string) => {
 		dispatch(removeFromCart(id));
 	};
 
+	/**
+	 * Updates the quantity of an item in the cart
+	 * @param {string} id - The ID of the item to update
+	 * @param {React.ChangeEvent<HTMLInputElement>} e - The input change event
+	 */
 	const handleQuantityChange = (
 		id: string,
 		e: React.ChangeEvent<HTMLInputElement>,
@@ -42,6 +70,11 @@ const Order = () => {
 		}
 	};
 
+	/**
+	 * Handles order submission with delivery address
+	 * Calculates total amount, shows confirmation alert, clears cart, and navigates to menu
+	 * @param {React.FormEvent<HTMLFormElement>} e - The form submission event
+	 */
 	const handleOrder = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
@@ -138,11 +171,7 @@ const Order = () => {
 					})}
 				</div>
 
-				<form
-					className="order-form-container"
-					onSubmit={handleOrder}
-					// role="form"
-				>
+				<form className="order-form-container" onSubmit={handleOrder}>
 					<div className="order-form">
 						<div className="form-group">
 							<label className="form-label-street" htmlFor="street">

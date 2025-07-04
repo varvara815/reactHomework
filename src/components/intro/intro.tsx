@@ -13,6 +13,21 @@ import {
 
 import Background03 from "../ui/background03";
 
+/**
+ * Intro component for the landing page
+ *
+ * @component
+ * @description Renders the main landing page with hero section, including
+ * promotional text, call-to-action button, Trustpilot rating, and delivery image.
+ * Features a prominent "Place an Order" button that navigates to the menu page.
+ *
+ * @returns {JSX.Element} Landing page with hero content and navigation to menu
+ *
+ * @example
+ * ```tsx
+ * <Intro />
+ * ```
+ */
 const Intro = () => {
 	const navigate = useNavigate();
 

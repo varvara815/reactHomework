@@ -5,6 +5,21 @@ import type { NavigationItem } from "../../../custom";
 import { navigation } from "../constants";
 import { useTheme } from "../../contexts/ThemeContext";
 
+/**
+ * Header component for the application navigation
+ *
+ * @component
+ * @description Renders the main navigation header with logo, navigation menu,
+ * theme toggle button, and shopping cart with item count. Displays active
+ * navigation states and provides theme switching functionality.
+ *
+ * @returns {JSX.Element} Header with navigation, theme toggle, and cart
+ *
+ * @example
+ * ```tsx
+ * <Header />
+ * ```
+ */
 const Header = () => {
 	const cartCount = useAppSelector((state) => state.cart.count);
 	const { theme, toggleTheme } = useTheme();
